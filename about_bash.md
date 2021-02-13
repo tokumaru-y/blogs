@@ -1,4 +1,24 @@
-# 参考になりそうなところ.
-# https://sechiro.hatenablog.com/entry/20120806/1344267619
-# https://rat.cis.k.hosei.ac.jp/article/linux/bash_intro.html
-# https://kanasys.com/tech/803
+### 参考
+https://sechiro.hatenablog.com/entry/20120806/1344267619
+https://rat.cis.k.hosei.ac.jp/article/linux/bash_intro.html
+https://kanasys.com/tech/803
+
+## そもそも「bash」って何？
+UNIX系のOSに対して、ユーザーの入力を伝える、またはその逆の役割を果たすプログラムをシェルと呼ぶ。多くの種類があるが、Linuxにおけるでデファクトスタンダードになっているものがbashである。
+*ちなみに,シェルに命令をするスクリプトは「シェルスクリプト」と呼ぶが略して「シェル」といってしまうと「技術力がないのか...?」みたいな印象を抱く人もいるそう。（確かに「シェル」≠「シェルスクリプト」なので、正しいがつい言ってしまいがちなので、要注意）
+## よくある「bin/bash」と「bin/sh」の違いとは...?
+一般的に見かける記事では、「bin/shはbin/bashへのシンボリックリンクになっている」と言われています。
+```
+$ ls -l /bin/sh
+0 lrwxrwxrwx 1 root root 4 Sep 27  2014 /bin/sh -> bash
+```
+移植性を考慮しないのなら、bashを使っておいた方がよさげ
+## zshとかは何?
+主にmacOS使用時に出会うシェルかと思います。そもそもなぜbashではないのかというと
+```
+bashのライセンスとセキュリティによる事情があります。MacOS Mojaveまでに搭載されているbashはバージョンが3で実はこれは10年以上前のもの。すでにbashのバージョンは5になっているのにここで止まっていた理由のはbash 4からGPL3が採用されたことにあります。Apple社としてはこれを受け入れられず、bashが古いままであることによるセキュリティ問題が浮上。その結果、MIT likeライセンスであるzshの採用に至ったものと思われます。
+引用元：https://kanasys.com/tech/803
+```
+という内部事情があります。
+__こう書くとあたかも「zsh」がbashの上位互換のような印象を受けますがそうではありません。__
+違いとしては、作法が違うぐらいで一旦頭の片隅に入れておけば...よい？？？
